@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Transition } from '@headlessui/react'
+
 
 const BottomNav = () => {
+  const [isProfileOpen, setIsOpen] = useState(false)
+
 
   return (
     <div className="">
@@ -33,12 +37,37 @@ const BottomNav = () => {
               </svg>
               {/* <span className="tab tab-whishlist block text-xs">Recipes</span> */}
             </Link>
-            <Link to="#" className="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
-              <svg className="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 30 30" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-              {/* <span className="tab tab-account block text-xs">Profile</span> */}
-            </Link>
+
+            {/* Profile dropdown */}
+            <div className="relative">
+              <div>
+                <button type="button" onClick={() => setIsOpen(!isProfileOpen)} className="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-outt" id="user-menu" aria-label="User menu" aria-haspopup="true">
+                  {/*  Heroicon name: user  */}
+                  <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Profile dropdown panel, show/hide based on dropdown state. */}
+              <Transition
+                show={isProfileOpen}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-75"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-75">
+
+                <div className="origin-bottom-right absolute right-0 bottom-0 mb-16 w-48 rounded-md shadow-lg">
+                  <div className="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                    <Link to="#" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Your Profile</Link>
+                    <Link to="#" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Settings</Link>
+                    <Link to="#" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Sign out</Link>
+                  </div>
+                </div>
+              </Transition>
+            </div>
           </div>
         </div>
       </div>
