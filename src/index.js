@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './components/App'
+import Navbar from './components/Navbar/Navbar'
+import BottomNav from './components/BottomNav/BottomNav'
 import Login from "./components/Auth/Login"
 import Register from "./components/Auth/Register"
 import Plans from "./components/Plans/Plans"
@@ -38,13 +40,21 @@ class Root extends React.Component {
     return this.props.isLoading ?
       <Spinner /> :
       (
-        <Switch>
-          <Route exact path="/home" component={App} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/plans" component={Plans} />
-          <Route path="/tracker" component={Tracker} />
-        </Switch>
+        <div>
+          <Navbar />
+          <Switch>
+            <Route exact path="/home" component={App} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/plans" component={Plans} />
+            <Route path="/tracker" component={Tracker} />
+            {/* <Route path="/recipes" component={Recipes} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/settings" component={Settings}/>
+          <Route path="/about" component={About} /> */}
+          </Switch>
+          <BottomNav />
+        </div>
       )
   }
 }

@@ -6,12 +6,10 @@ import './App.css'
 
 const App = () => (
   <div className="app">
-    <Navbar />
-    <div className="">
-      <Home />
-    </div>
 
-    <BottomNav />
+
+    <Home />
+
   </div>
 );
 
