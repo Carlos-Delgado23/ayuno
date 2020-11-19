@@ -5,9 +5,12 @@ import BottomNav from './BottomNav/BottomNav'
 import './App.css'
 
 const App = () => (
-  <div className="bg-deep-blue">
+  <div className="app">
     <Navbar />
-    <Home />
+    <div className="">
+      <Home />
+    </div>
+
     <BottomNav />
   </div>
 );

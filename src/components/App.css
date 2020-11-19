@@ -1,5 +1,8 @@
-.App {
-  text-align: center;
-  background-color: #13218C;
+html,
+body,
+.app {
+  height: 100vh;
+  background: #13218C;
 }
+
 

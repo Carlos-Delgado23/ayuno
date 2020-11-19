@@ -3,7 +3,7 @@ import React from 'react'
 const Home = () => {
 
   return (
-    <div className="pl-6 h-screen flex flex-col justify-center">
+    <div className="px-8 h-screen flex flex-col justify-center">
       <h3 className="text-white-lilac font-bold uppercase text-4xl">
         Track your progress <br />
         Read the word <br />
