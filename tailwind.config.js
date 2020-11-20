@@ -14,6 +14,10 @@ module.exports = {
         'bright-turq': '#00FFC4',
         'electric-violet': '#753EFF',
         'biloba-violet': '#B4B7EE',
+      },
+      fontFamily: {
+        logo: ['Kodchasan'],
+        logoTwo: ['Montserrat Alternates']
       }
     },
   },

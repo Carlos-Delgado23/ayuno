@@ -13,7 +13,7 @@ const Navbar = () => {
 
           <div className="flex-1 flex items-center justify-start sm:items-stretch">
 
-            <Link to="#" className="w-auto text-4xl text-white-lilac">AYUNO</Link>
+            <Link to="/home" className="w-auto font-logoTwo text-4xl text-white-lilac">AYUNO</Link>
 
             <div className="flex items-center hidden sm:block sm:ml-6">
               <div className="flex items-center mt-3">
