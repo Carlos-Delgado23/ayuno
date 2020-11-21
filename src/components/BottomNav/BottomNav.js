@@ -9,7 +9,7 @@ const BottomNav = () => {
 
   return (
     <div className="">
-      <div className="md:hidden fixed inset-x-0 bottom-0 bg-deep-blue shadow -mb-16">
+      <div className="sm:hidden fixed inset-x-0 bottom-0 bg-deep-blue shadow -mb-16">
         <div className="fixed inset-x-0 bottom-0 bg-deep-blue shadow">
           <div id="tabs" className="flex justify-between px-8 pt-3 pb-2 text-white-lilac">
             <Link to="/home" className="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white-lilac focus:outline-none focus:text-white-lilac focus:bg-electric-violet transition duration-150 ease-in-out">

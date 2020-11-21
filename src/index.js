@@ -24,39 +24,44 @@ import { setUser, clearUser } from './actions'
 const store = createStore(rootReducer, composeWithDevTools());
 
 class Root extends React.Component {
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.props.setUser(user);
-        this.props.history.push('/plans');
-      } else {
-        this.props.histort.push('/home');
-        this.props.clearUser();
-      }
-    })
-  }
-
   render() {
-    return this.props.isLoading ?
-      <Spinner /> :
-      (
-        <div>
-          <Navbar />
-          <Switch>
-            <Route exact path="/home" component={App} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/plans" component={Plans} />
-            <Route path="/tracker" component={Tracker} />
-            {/* <Route path="/recipes" component={Recipes} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/settings" component={Settings}/>
-          <Route path="/about" component={About} /> */}
-          </Switch>
-          <BottomNav />
-        </div>
-      )
+    return (
+      <App />
+    )
   }
+  //   componentDidMount() {
+  //     firebase.auth().onAuthStateChanged(user => {
+  //       if (user) {
+  //         this.props.setUser(user);
+  //         this.props.history.push('/plans');
+  //       } else {
+  //         this.props.histort.push('/home');
+  //         this.props.clearUser();
+  //       }
+  //     })
+  //   }
+
+  //   render() {
+  //     return this.props.isLoading ?
+  //       <Spinner /> :
+  //       (
+  //         <div>
+  //           <Navbar />
+  //           <Switch>
+  //             <Route exact path="/home" component={App} />
+  //             <Route path="/login" component={Login} />
+  //             <Route path="/register" component={Register} />
+  //             <Route path="/plans" component={Plans} />
+  //             <Route path="/tracker" component={Tracker} />
+  //             {/* <Route path="/recipes" component={Recipes} />
+  //           <Route path="/profile" component={Profile} />
+  //           <Route path="/settings" component={Settings}/>
+  //           <Route path="/about" component={About} /> */}
+  //           </Switch>
+  //           <BottomNav />
+  //         </div>
+  //       )
+  //   }
 }
 
 const mapStateToProps = state => ({
