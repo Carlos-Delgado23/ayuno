@@ -20,8 +20,30 @@ const Register = () => {
             name="username"
             placeholder="Username"
             type="text"
-            className="h-12 w-full rounded-lg px-3 text-deep-blue border-deep-blue"
+            className="h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border-deep-blue"
           />
+          <input
+            name="email"
+            placeholder="Email Address"
+            type="email"
+            className="h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border-deep-blue"
+          />
+          <input
+            name="password"
+            placeholder="Password"
+            type="password"
+            className="h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border-deep-blue"
+          />
+          <input
+            name="passwordConfirmation"
+            placeholder="Password Confirmation"
+            type="password"
+            className="h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border-deep-blue"
+          />
+
+          <button className="bg-electric-violet py-2 text-white-lilac w-full rounded-3xl shadow-lg">
+            Sign Up
+          </button>
         </form>
 
       </div>
