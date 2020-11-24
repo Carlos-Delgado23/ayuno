@@ -2,7 +2,6 @@ import React from 'react'
 import firebase from '../../firebase'
 // import md5 from 'md5'
 import { Link } from 'react-router-dom'
-import { createStore } from 'redux'
 
 class Register extends React.Component {
   state = {
@@ -120,7 +119,7 @@ class Register extends React.Component {
           <Link to="/login" className="text-electric-violet pl-2">Sign In</Link>
           </h5>
 
-          <form className="w-11/12">
+          <form className="w-11/12" onSubmit={this.handleSubmit}>
             <input
               name="username"
               placeholder="Username"
@@ -154,9 +153,25 @@ class Register extends React.Component {
               className="h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border-deep-blue"
             />
 
-            <button className="bg-electric-violet py-2 text-white-lilac w-full rounded-3xl shadow-lg">
-              Sign Up
-          </button>
+            <button disabled={loading} className="bg-electric-violet h-12 text-white-lilac w-full rounded-3xl shadow-lg">
+              <svg
+                className={`animate-spin ${loading ? 'inline-block' : 'hidden'}`}
+                xmlns="http://www.w3.org/2000/svg"
+                width="27.233"
+                height="28.92"
+                viewBox="0 0 27.233 28.92">
+                <path
+                  id="Icon_metro-spinner"
+                  data-name="Icon metro-spinner"
+                  d="M14.139,5.784A3.856,3.856,0,1,1,17.995,9.64,3.856,3.856,0,0,1,14.139,5.784Zm8.18,3.388a3.856,3.856,0,1,1,3.856,3.856A3.856,3.856,0,0,1,22.319,9.172Zm5.316,8.18a1.928,1.928,0,1,1,1.928,1.928A1.928,1.928,0,0,1,27.635,17.352Zm-3.388,8.18a1.928,1.928,0,1,1,1.928,1.928A1.928,1.928,0,0,1,24.247,25.532Zm-8.18,3.388A1.928,1.928,0,1,1,18,30.849,1.928,1.928,0,0,1,16.067,28.921Zm-8.18-3.388A1.928,1.928,0,1,1,9.815,27.46a1.928,1.928,0,0,1-1.928-1.928ZM6.923,9.172a2.892,2.892,0,1,1,2.892,2.892A2.892,2.892,0,0,1,6.923,9.172Zm-2.665,8.18a2.169,2.169,0,1,1,2.169,2.169A2.169,2.169,0,0,1,4.258,17.352Z"
+                  transform="translate(-4.258 -1.928)"
+                  fill="#f8f8fc"
+                />
+              </svg>
+              <p className={`font-medium text-base ${loading ? 'hidden' : 'inline-block'}`}>
+                Sign Up
+              </p>
+            </button>
           </form>
 
           <div className="flex justify-center items-center w-full">

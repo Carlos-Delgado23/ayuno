@@ -3,7 +3,7 @@ import { combineReducers } from 'redux'
 
 const initialUserState = {
   currentUser: null,
-  isLoading: false
+  isLoading: true,
   // CHANGE BACK TO TRUE ONCE DONE TESTING
 };
 
