@@ -9,25 +9,11 @@ import Register from "./Auth/Register"
 import Plans from "./Plans/Plans"
 import Tracker from "./Tracker/Tracker"
 import Spinner from "./Spinner/Spinner"
-import firebase from "../firebase"
 
-// import './tailwind.output.css'
-
-import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class App extends React.Component {
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.props.setUser(user);
-        this.props.history.push('/plans');
-      } else {
-        this.props.histort.push('/home');
-        this.props.clearUser();
-      }
-    })
-  }
-
   render() {
     return this.props.isLoading ?
       <Spinner /> :
@@ -51,4 +37,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToProps)(App);

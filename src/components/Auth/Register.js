@@ -91,7 +91,7 @@ class Register extends React.Component {
     return errors.some(error =>
       error.message.toLowerCase().includes(inputName)
     )
-      ? 'error'
+      ? 'text-red-600'
       // change **error** to a color for tailwind border input
       : ''
   }
@@ -134,7 +134,7 @@ class Register extends React.Component {
               type="email"
               onChange={this.handleChange}
               value={email}
-              className="h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border-deep-blue"
+              className={`${this.handleInputError(errors, 'email')} h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border-deep-blue`}
             />
             <input
               name="password"
@@ -142,7 +142,7 @@ class Register extends React.Component {
               type="password"
               onChange={this.handleChange}
               value={password}
-              className="h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border-deep-blue"
+              className={`${this.handleInputError(errors, 'password')} h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border-deep-blue`}
             />
             <input
               name="passwordConfirmation"
@@ -150,7 +150,7 @@ class Register extends React.Component {
               type="password"
               onChange={this.handleChange}
               value={passwordConfirmation}
-              className="h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border-deep-blue"
+              className={`${this.handleInputError(errors, 'password')} h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border-deep-blue`}
             />
 
             <button disabled={loading} className="bg-electric-violet h-12 text-white-lilac w-full rounded-3xl shadow-lg">
@@ -173,7 +173,12 @@ class Register extends React.Component {
               </p>
             </button>
           </form>
-
+          {errors.length > 0 && (
+            <div className="text-red-600 text-center mt-4">
+              <h3 className="text-lg font-bold uppercase">Error</h3>
+              {this.displayErrors(errors)}
+            </div>
+          )}
           <div className="flex justify-center items-center w-full">
             <div className="hidden sm:block"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="2" viewBox="0 0 100 2">
               <line id="Line" x2="100" transform="translate(0 1)" fill="none" stroke="#13218c" stroke-width="2" />
