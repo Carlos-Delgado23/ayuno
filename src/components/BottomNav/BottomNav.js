@@ -83,7 +83,7 @@ class BottomNav extends React.Component {
                       <Link to="/profile" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:text-white-lilac
                     hover:bg-electric-violet focus:outline-none focus:text-white-lilac focus:bg-electric-violet transition duration-150 ease-in-out" role="menuitem">Your Profile</Link>
                       <Link to="/settings" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:text-white-lilac hover:bg-electric-violet focus:outline-none focus:text-white-lilac focus:bg-electric-violet transition duration-150 ease-in-out" role="menuitem">Settings</Link>
-                      <span className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:text-white-lilac hover:bg-electric-violet focus:outline-none focus:text-white-lilac focus:bg-electric-violet transition duration-150 ease-in-out" role="menuitem"
+                      <span className="cursor-pointer block px-4 py-2 text-sm leading-5 text-gray-700 hover:text-white-lilac hover:bg-electric-violet focus:outline-none focus:text-white-lilac focus:bg-electric-violet transition duration-150 ease-in-out" role="menuitem"
                         onClick={this.handleSignout}>Sign out</span>
                     </div>
                   </div>
