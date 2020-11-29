@@ -1,23 +1,29 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, withRouter } from 'react-router-dom'
 import { Transition } from '@headlessui/react'
 
 import firebase from '../../firebase'
 
 
-export const BottomNav = () => {
+const BottomNav = (props) => {
   // const [user, setUser] = useState(this.props.currentUser)
   const [profileOpen, setProfileOpen] = useState(false)
+
+  useEffect(() => {
+    return props.history.listen(() => {
+      setProfileOpen(false)
+    })
+  })
+
+  const profileMenu = () => {
+    setProfileOpen(!profileOpen)
+  }
 
   const handleSignout = () => {
     firebase
       .auth()
       .signOut()
       .then(() => console.log('signed out!'))
-  }
-
-  const profileMenu = () => {
-    setProfileOpen(!profileOpen)
   }
 
   return (
@@ -86,4 +92,4 @@ export const BottomNav = () => {
 }
 
 
-export default BottomNav
+export default withRouter(BottomNav)

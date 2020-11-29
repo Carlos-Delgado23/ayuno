@@ -1,12 +1,17 @@
-import React, { useState } from 'react'
-import { Link } from "react-router-dom"
+import React, { useState, useEffect } from 'react'
+import { Link, withRouter } from "react-router-dom"
 // import { Transition } from '@headlessui/react'
 
-const Navbar = () => {
-
+const Navbar = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  return (
 
+  useEffect(() => {
+    return props.history.listen(() => {
+      setIsMenuOpen(false)
+    })
+  })
+
+  return (
     <nav className="bg-deep-blue fixed inset-x-0 top-0">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
@@ -92,4 +97,4 @@ const Navbar = () => {
 }
 
 
-export default Navbar;
+export default withRouter(Navbar);
