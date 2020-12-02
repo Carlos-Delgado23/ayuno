@@ -1,5 +1,5 @@
 import React from 'react'
-import FastModal from './FastFrom/FastModal'
+import FastModal from './FastFromModal/FastModal'
 
 import { FastCard } from './FastCard'
 
