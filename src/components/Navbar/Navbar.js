@@ -23,7 +23,7 @@ const Navbar = (props) => {
             <div className="flex items-center hidden sm:block sm:ml-6">
               <div className="flex items-center mt-3">
                 <Link to="/home" className="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white-lilac bg-electric-violet hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">Home</Link>
-                <Link to="/plans" className="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-white-lilac hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">Plans</Link>
+                <Link to="/fasts" className="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-white-lilac hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">Fasts</Link>
                 <Link to="/tracker" className="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-white-lilac hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">Tracker</Link>
                 <Link to="/about" className="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-white-lilac hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">About Us</Link>
               </div>
@@ -87,7 +87,7 @@ const Navbar = (props) => {
       <div className={`${isMenuOpen ? 'block' : 'hidden'} sm:hidden`}>
         <div className="px-2 pt-2 pb-3">
           <Link to="/home" className="block px-3 py-2 rounded-md text-base font-medium text-white-lilac hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">Home</Link>
-          <Link to="/plans" className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-white-lilac hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">Plans</Link>
+          <Link to="/fasts" className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-white-lilac hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">Fasts</Link>
           <Link to="/tracker" className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-white-lilac hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">Tracker</Link>
           <Link to="/about" className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-white-lilac hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">About Us</Link>
         </div>

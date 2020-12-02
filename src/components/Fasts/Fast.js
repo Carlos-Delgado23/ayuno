@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Plan = (props) => {
+export const Fast = (props) => {
   return (
     <div>
 

@@ -6,7 +6,7 @@ import Navbar from './Navbar/Navbar'
 import BottomNav from './BottomNav/BottomNav'
 import Login from "./Auth/Login"
 import Register from "./Auth/Register"
-import Plans from "./Plans/Plans"
+import Fasts from "./Fasts/Fasts"
 import Tracker from "./Tracker/Tracker"
 import Spinner from "./Spinner/Spinner"
 
@@ -24,7 +24,7 @@ class App extends React.Component {
             <Route exact path="/home" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path="/plans" component={Plans} />
+            <Route path="/fasts" component={Fasts} />
             <Route path="/tracker" component={Tracker} />
             {/* <Route path="/recipes" component={Recipes} />
           <Route path="/profile" component={Profile} />
