@@ -4,7 +4,6 @@ import { combineReducers } from 'redux'
 const initialUserState = {
   currentUser: null,
   isLoading: true,
-  // CHANGE BACK TO TRUE ONCE DONE TESTING
 };
 
 const user_reducer = (state = initialUserState, action) => {
