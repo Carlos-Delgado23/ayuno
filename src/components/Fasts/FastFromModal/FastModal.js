@@ -8,38 +8,107 @@ import './modal.css'
 Modal.setAppElement('#root')
 
 const FastModal = () => {
-  const [modalIsOpen, setIsOpen] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
-  const openModal = () => {
-    setIsOpen(true)
-  }
-
-  const closeModal = () => {
-    setIsOpen(false);
-  }
 
   return (
+
     <div>
-      <button onClick={openModal} className="flex justify-center font-sans font-medium text-base text-biloba-violet border border-biloba-violet hover:bg-electric-violet hover:border-electric-violet py-2 mx-auto w-1/4 rounded-full mb-8 focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14.74" height="14.74" viewBox="0 0 14.74 14.74" className="self-center pr-1">
-          <g id="Icon_feather-plus" data-name="Icon feather-plus" transform="translate(-6 -6)">
-            <path id="Path_6" data-name="Path 6" d="M18,7.5V19.24" transform="translate(-4.63)" fill="none" stroke="#B4B7EE" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
-            <path id="Path_7" data-name="Path 7" d="M7.5,18H19.24" transform="translate(0 -4.63)" fill="none" stroke="#B4B7EE" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
-          </g>
-        </svg>
-  Custom
-    </button>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Custom Fast"
-        className="Modal"
-      // overlayClassName="Overlay"
+      <button
+        className="flex justify-center font-sans font-medium text-xs text-biloba-violet border border-biloba-violet hover:bg-electric-violet hover:border-electric-violet py-2 mx-auto w-1/4 rounded-full mb-8 outline-none focus:outline-none"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        onClick={() => setShowModal(true)}
       >
+        Custom Fast
+      </button>
+      {showModal ? (
+        <>
+          <div
+            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+          >
+            <div className="relative w-auto my-6 mx-auto max-w-sm">
 
-        <FastForm />
+              {/*content*/}
+              <div className="border-0 rounded-3xl shadow-lg relative flex flex-col w-full bg-white-lilac outline-none focus:outline-none">
 
-      </Modal>
+                {/*header*/}
+                <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
+                  <h3 className="text-3xl font-sans font-medium text-deep-blue">
+                    Custom Fast
+                  </h3>
+                  <button
+                    className="p-3 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl rounded-full bg-deep-blue leading-none font-semibold outline-none focus:outline-none"
+                    onClick={() => setShowModal(false)}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x text-bright-turq"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                  </button>
+                </div>
+
+                {/*body*/}
+                <div className="relative p-6 flex-auto">
+                  <input
+                    name="title"
+                    id="title"
+                    type="text"
+                    placeholder="Title"
+                    className="px-3 py-3 text-deep-blue relative bg-white bg-white rounded text-sm border border-deep-blue outline-none focus:outline-none focus:shadow-outline focus:border-transparent focus:ring-2 focus:ring-deep-blue w-full" />
+
+                  <div className="mt-6">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Cover photo
+                    </label>
+
+                    <div className="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                      <div className="space-y-1 text-center">
+                        <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                          <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <div className="flex text-sm text-gray-600">
+                          <label htmlFor="file-upload" className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                            <span>Upload a file</span>
+                            <input
+                              id="file-upload"
+                              name="file-upload"
+                              type="file"
+                              className="sr-only" />
+                          </label>
+                          <p className="pl-1">or drag and drop</p>
+                        </div>
+                        <p className="text-xs text-gray-500">
+                          PNG, JPG, GIF up to 10MB
+                          </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/*footer*/}
+                <div className="flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b">
+                  <button
+                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
+                    type="button"
+                    style={{ transition: "all .15s ease" }}
+                    onClick={() => setShowModal(false)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="bg-electric-violet text-white-lilac text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                    type="button"
+                    style={{ transition: "all .15s ease" }}
+                    onClick={() => setShowModal(false)}
+                  >
+                    Save Changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+        </>
+      ) : null}
+
     </div>
   )
 }
