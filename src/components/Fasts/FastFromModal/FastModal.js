@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Modal from 'react-modal'
 import ReactQuill from "react-quill"
 import 'react-quill/dist/quill.snow.css'
-import FastForm from './FastForm'
+// import FastForm from './FastForm'
 
 import './modal.css'
 
