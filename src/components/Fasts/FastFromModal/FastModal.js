@@ -71,7 +71,7 @@ class FastModal extends React.Component {
                   <div className="border-0 rounded-3xl shadow-lg relative flex flex-col w-full bg-white-lilac outline-none focus:outline-none">
 
                     {/*header*/}
-                    <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
+                    <div className="flex items-start justify-between p-5 rounded-t">
                       <h3 className="text-3xl font-sans font-medium text-deep-blue">
                         Custom Fast
                   </h3>
@@ -147,21 +147,21 @@ class FastModal extends React.Component {
 
                       {/*footer*/}
                       <div
-                        className="flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b">
+                        className="flex items-center justify-end p-6 rounded-b">
                         <button
-                          className="text-electric-violet background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
+                          className="text-deep-blue background-transparent font-bold uppercase px-6 py-3 text-sm outline-none rounded-full focus:outline-none hover:shadow-lg mr-1 mb-1"
                           type="button"
                           style={{ transition: "all .15s ease" }}
                           onClick={() => this.setState({ showModal: false })}
                         >
-                          Never Mind
+                          Cancel
                       </button>
                         <button
-                          className="bg-deep-blue  text-white-lilac text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                          className="bg-deep-blue  text-white-lilac text-sm font-bold uppercase px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                           type="submit"
                           style={{ transition: "all .15s ease" }}
                         >
-                          Save Changes
+                          Save
                       </button>
                       </div>
                     </form>
