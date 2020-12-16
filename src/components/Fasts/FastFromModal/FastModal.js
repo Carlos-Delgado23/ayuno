@@ -115,6 +115,19 @@ class FastModal extends React.Component {
                           className="mt-6 bg-white"
                         />
 
+                        {/* days & time */}
+                        <div className="flex mt-6">
+                          <div className="text-right mr-2">
+                            <label className="block text-sm font-medium text-gray-700">Days</label>
+                            <input type="number" min="0" name="days" id="days" className="px-3 py-3 text-deep-blue relative bg-white bg-white rounded-md text-sm border border-gray-400 outline-none focus:outline-none focus:shadow-outline focus:border-transparent focus:ring-2 focus:ring-deep-blue w-3/6" />
+                          </div>
+                          <div className="ml-2">
+                            <label className="block text-sm font-medium text-gray-700">Hours</label>
+                            <input type="number" min="0" name="hours" id="hours" className="px-3 py-3 text-deep-blue relative bg-white bg-white rounded-md text-sm border border-gray-400 outline-none focus:outline-none focus:shadow-outline focus:border-transparent focus:ring-2 focus:ring-deep-blue w-3/6" />
+                          </div>
+                        </div>
+
+
                         {/* cover photo */}
                         <div className="mt-6">
                           <label className="block text-sm font-medium text-gray-700">
