@@ -2,10 +2,9 @@ import React from 'react'
 import Modal from 'react-modal'
 import ReactQuill from "react-quill"
 import 'react-quill/dist/quill.snow.css'
-// import FastForm from './FastForm'
-
 
 import './modal.css'
+import { BiX } from 'react-icons/bi'
 
 
 Modal.setAppElement('#root')
@@ -80,7 +79,7 @@ class FastModal extends React.Component {
                         className="p-3 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl rounded-full bg-deep-blue leading-none font-semibold outline-none focus:outline-none"
                         onClick={() => this.setState({ showModal: false })}
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="feather feather-x text-bright-turq"><line x1={18} y1={6} x2={6} y2={18} /><line x1={6} y1={6} x2={18} y2={18} /></svg>
+                        <BiX className="w-6 h-6 text-bright-turq" />
                       </button>
                     </div>
 

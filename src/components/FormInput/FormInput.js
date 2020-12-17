@@ -1,9 +1,12 @@
 import React from 'react'
 
-const FormInput = ({ handleChange, labelErr, ...otherProps }) => {
+const FormInput = ({ handleChange, labelErr, icon, ...otherProps }) => {
   return (
+    <div className="relative flex w-full flex-wrap items-stretch mb-3">
+      {icon ? icon : ''}
+      <input className={`${labelErr} px-3 py-3 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded-lg text-sm shadow outline-none w-full pl-10`} onChange={handleChange} {...otherProps} />
+    </div>
 
-    <input className={`${labelErr} h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border outline-none`} onChange={handleChange} {...otherProps} />
 
   )
 }

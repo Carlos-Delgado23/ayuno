@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 import FormInput from '../FormInput/FormInput'
 
 import firebase from '../../firebase'
+
+// ICONS
+import { BiEnvelope, BiLockAlt } from 'react-icons/bi'
 
 class Login extends React.Component {
   state = {
@@ -42,7 +44,7 @@ class Login extends React.Component {
   isFormValid = ({ email, password }) => email && password;
 
   handleInputError = (errors, inputName) => {
-    return errors.some(error => error.message.toLowerCase().includes(inputName)) ? 'border-red-600' : ''
+    return errors.some(error => error.message.toLowerCase().includes(inputName)) ? 'border, border-red-600' : ''
   }
 
   render() {
@@ -81,7 +83,10 @@ class Login extends React.Component {
               onChange={this.handleChange}
               value={email}
               labelErr={`${this.handleInputError(errors, 'email')}`}
-            />
+              icon={<BiEnvelope className='z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3' />}
+            >
+
+            </FormInput>
             <FormInput
               name="password"
               placeholder="Password"
@@ -89,6 +94,7 @@ class Login extends React.Component {
               onChange={this.handleChange}
               value={password}
               labelErr={`${this.handleInputError(errors, 'password')}`}
+              icon={<BiLockAlt className='z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3' />}
             />
 
             <button disabled={loading} className="bg-electric-violet h-12 text-white-lilac w-full rounded-3xl shadow-lg">
