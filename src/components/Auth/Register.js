@@ -6,11 +6,7 @@ import { Link } from 'react-router-dom'
 import FormInput from '../FormInput/FormInput'
 import SocialButton from '../CustomButton/SocialButton'
 
-// ICONS
-import { BiUser, BiEnvelope, BiLockAlt, BiRevision } from 'react-icons/bi'
 import { VscLoading } from 'react-icons/vsc'
-import { FaFacebookF, FaTwitter } from 'react-icons/fa'
-import { FcGoogle } from 'react-icons/fc'
 
 class Register extends React.Component {
   state = {
@@ -100,8 +96,7 @@ class Register extends React.Component {
     return errors.some(error =>
       error.message.toLowerCase().includes(inputName)
     )
-      ? 'text-red-600'
-      // change **error** to a color for tailwind border input
+      ? 'text-red-600, border, border-red-600'
       : ''
   }
 
@@ -135,7 +130,7 @@ class Register extends React.Component {
               type="text"
               onChange={this.handleChange}
               value={username}
-              icon={<BiUser className='z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3' />}
+              icon={'user'}
             />
             <FormInput
               name="email"
@@ -144,7 +139,7 @@ class Register extends React.Component {
               onChange={this.handleChange}
               value={email}
               labelErr={`${this.handleInputError(errors, 'email')}`}
-              icon={<BiEnvelope className='z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3' />}
+              icon={'email'}
             />
             <FormInput
               name="password"
@@ -153,7 +148,7 @@ class Register extends React.Component {
               onChange={this.handleChange}
               value={password}
               labelErr={`${this.handleInputError(errors, 'password')}`}
-              icon={<BiLockAlt className='z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3' />}
+              icon={'password'}
             />
             <FormInput
               name="passwordConfirmation"
@@ -162,7 +157,7 @@ class Register extends React.Component {
               onChange={this.handleChange}
               value={passwordConfirmation}
               labelErr={`${this.handleInputError(errors, 'password')}`}
-              icon={<BiRevision className='z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3' />}
+              icon={'passwordConfirmation'}
             />
 
             <button disabled={loading} className="bg-electric-violet h-12 text-white-lilac w-full rounded-3xl shadow-lg">
