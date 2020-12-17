@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link, withRouter } from "react-router-dom"
 
+import NavbarLink from './NavbarLink'
+
 // ICONS
 import { BiBell, BiMenuAltRight, BiX } from 'react-icons/bi'
 
@@ -24,10 +26,10 @@ const Navbar = (props) => {
 
             <div className="flex items-center hidden sm:block sm:ml-6">
               <div className="flex items-center mt-3">
-                <Link to="/home" className="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white-lilac bg-electric-violet hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">Home</Link>
-                <Link to="/fasts" className="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-white-lilac hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">Fasts</Link>
-                <Link to="/tracker" className="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-white-lilac hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">Tracker</Link>
-                <Link to="/about" className="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-white-lilac hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">About Us</Link>
+                <NavbarLink to="/home">Home</NavbarLink>
+                <NavbarLink to="/fasts" custClass="ml-4">Fasts</NavbarLink>
+                <NavbarLink to="/tracker" custClass="ml-4">Tracker</NavbarLink>
+                <NavbarLink to="/about" custClass="ml-4">About Us</NavbarLink>
               </div>
             </div>
           </div>
@@ -52,10 +54,10 @@ const Navbar = (props) => {
 
       <div className={`${isMenuOpen ? 'block' : 'hidden'} sm:hidden`}>
         <div className="px-2 pt-2 pb-3">
-          <Link to="/home" className="block px-3 py-2 rounded-md text-base font-medium text-white-lilac hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">Home</Link>
-          <Link to="/fasts" className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-white-lilac hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">Fasts</Link>
-          <Link to="/tracker" className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-white-lilac hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">Tracker</Link>
-          <Link to="/about" className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-white-lilac hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet transition duration-150 ease-in-out">About Us</Link>
+          <NavbarLink to="/home" custClass="block  text-base">Home</NavbarLink>
+          <NavbarLink to="/fasts" custClass="mt-1 block text-base">Fasts</NavbarLink>
+          <NavbarLink to="/tracker" custClass="mt-1 block text-base">Tracker</NavbarLink>
+          <NavbarLink to="/about" custClass="mt-1 block text-base">About Us</NavbarLink>
         </div>
       </div>
     </nav >

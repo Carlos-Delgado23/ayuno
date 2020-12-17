@@ -18,7 +18,7 @@ module.exports = {
       },
       fontFamily: {
         logo: ['Kodchasan'],
-        logoTwo: ['Montserrat Alternates']
+        logoTwo: ['Montserrat Alternates', 'ui-sans-serif']
       }
     },
   },
