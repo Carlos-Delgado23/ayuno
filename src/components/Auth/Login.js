@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
+import FormInput from '../FormInput/FormInput'
+
 import firebase from '../../firebase'
 
 class Login extends React.Component {
@@ -63,22 +66,29 @@ class Login extends React.Component {
           <Link to="/register" className="text-electric-violet pl-2">Create an account</Link>
           </h5>
 
+          {errors.length > 0 && (
+            <div className="text-red-600 text-center mb-6">
+              <h3 className="text-lg font-bold uppercase">Error</h3>
+              {this.displayErrors(errors)}
+            </div>
+          )}
+
           <form className="w-11/12" onSubmit={this.handleSubmit}>
-            <input
+            <FormInput
               name="email"
               placeholder="Email"
               type="text"
               onChange={this.handleChange}
               value={email}
-              className={`${this.handleInputError(errors, 'email')} h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border-deep-blue`}
+              labelErr={`${this.handleInputError(errors, 'email')}`}
             />
-            <input
+            <FormInput
               name="password"
               placeholder="Password"
               type="password"
               onChange={this.handleChange}
               value={password}
-              className={`${this.handleInputError(errors, 'password')} h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border-deep-blue`}
+              labelErr={`${this.handleInputError(errors, 'password')}`}
             />
 
             <button disabled={loading} className="bg-electric-violet h-12 text-white-lilac w-full rounded-3xl shadow-lg">
@@ -101,13 +111,6 @@ class Login extends React.Component {
               </p>
             </button>
           </form>
-
-          {errors.length > 0 && (
-            <div className="text-red-600 text-center mt-4">
-              <h3 className="text-lg font-bold uppercase">Error</h3>
-              {this.displayErrors(errors)}
-            </div>
-          )}
 
           <div className="flex justify-center items-center w-full">
             <div className="hidden sm:block"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="2" viewBox="0 0 100 2">

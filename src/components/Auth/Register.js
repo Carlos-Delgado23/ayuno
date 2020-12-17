@@ -3,6 +3,8 @@ import firebase from '../../firebase'
 // import md5 from 'md5'
 import { Link } from 'react-router-dom'
 
+import FormInput from '../FormInput/FormInput'
+
 class Register extends React.Component {
   state = {
     username: "",
@@ -120,37 +122,36 @@ class Register extends React.Component {
           </h5>
 
           <form className="w-11/12" onSubmit={this.handleSubmit}>
-            <input
+            <FormInput
               name="username"
               placeholder="Username"
               type="text"
               onChange={this.handleChange}
               value={username}
-              className="h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border-deep-blue"
             />
-            <input
+            <FormInput
               name="email"
               placeholder="Email Address"
               type="email"
               onChange={this.handleChange}
               value={email}
-              className={`${this.handleInputError(errors, 'email')} h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border-deep-blue`}
+              labelErr={`${this.handleInputError(errors, 'email')}`}
             />
-            <input
+            <FormInput
               name="password"
               placeholder="Password"
               type="password"
               onChange={this.handleChange}
               value={password}
-              className={`${this.handleInputError(errors, 'password')} h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border-deep-blue`}
+              labelErr={`${this.handleInputError(errors, 'password')}`}
             />
-            <input
+            <FormInput
               name="passwordConfirmation"
               placeholder="Password Confirmation"
               type="password"
               onChange={this.handleChange}
               value={passwordConfirmation}
-              className={`${this.handleInputError(errors, 'password')} h-12 w-full rounded-xl px-3 mb-4 text-deep-blue border-deep-blue`}
+              labelErr={`${this.handleInputError(errors, 'password')}`}
             />
 
             <button disabled={loading} className="bg-electric-violet h-12 text-white-lilac w-full rounded-3xl shadow-lg">
