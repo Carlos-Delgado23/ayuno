@@ -3,7 +3,7 @@ import React from 'react'
 // ICONS
 import { BiUser, BiEnvelope, BiLockAlt, BiRevision } from 'react-icons/bi'
 
-const IconComp = {
+const Icons = {
   user: BiUser,
   email: BiEnvelope,
   password: BiLockAlt,
@@ -11,7 +11,7 @@ const IconComp = {
 }
 
 const FormInput = ({ handleChange, labelErr, icon, ...otherProps }) => {
-  const IconName = IconComp[icon || '']
+  const IconName = Icons[icon || '']
 
   return (
     <div className="relative flex w-full flex-wrap items-stretch mb-3">
