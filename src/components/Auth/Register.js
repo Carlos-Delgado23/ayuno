@@ -96,7 +96,7 @@ class Register extends React.Component {
     return errors.some(error =>
       error.message.toLowerCase().includes(inputName)
     )
-      ? 'text-red-600, border, border-red-600'
+      ? 'border-red-600'
       : ''
   }
 
@@ -113,15 +113,20 @@ class Register extends React.Component {
     return (
       <div className="flex justify-center content-center h-screen">
         <div className="w-5/6 max-w-xl my-auto p-6 bg-white-lilac rounded-xl flex flex-col justify-center items-center">
-
           <h1 className="text-2xl font-medium text-deep-blue">
             Sign Up
         </h1>
-
           <h5 className="text-xs font-medium text-deep-blue mt-2 mb-6">
             Already a user?
-          <Link to="/login" className="text-electric-violet pl-2">Sign In</Link>
+          <Link to="/login" className="text-electric-violet pl-2">Sign in</Link>
           </h5>
+
+          {errors.length > 0 && (
+            <div className="text-red-600 text-center mb-6">
+              <h3 className="text-lg font-bold uppercase">Error</h3>
+              {this.displayErrors(errors)}
+            </div>
+          )}
 
           <form className="w-11/12" onSubmit={this.handleSubmit}>
             <FormInput
@@ -168,12 +173,7 @@ class Register extends React.Component {
               </p>
             </button>
           </form>
-          {errors.length > 0 && (
-            <div className="text-red-600 text-center mt-4">
-              <h3 className="text-lg font-bold uppercase">Error</h3>
-              {this.displayErrors(errors)}
-            </div>
-          )}
+
           <div className="flex justify-center items-center w-full">
             <div className="hidden sm:block"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="2" viewBox="0 0 100 2">
               <line id="Line" x2="100" transform="translate(0 1)" fill="none" stroke="#13218c" stroke-width="2" />

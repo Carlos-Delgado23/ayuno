@@ -43,7 +43,7 @@ class Login extends React.Component {
   isFormValid = ({ email, password }) => email && password;
 
   handleInputError = (errors, inputName) => {
-    return errors.some(error => error.message.toLowerCase().includes(inputName)) ? 'border, border-red-600' : ''
+    return errors.some(error => error.message.toLowerCase().includes(inputName)) ? 'border-red-600' : ''
   }
 
   render() {
@@ -77,15 +77,13 @@ class Login extends React.Component {
           <form className="w-11/12" onSubmit={this.handleSubmit}>
             <FormInput
               name="email"
-              placeholder="Email"
+              placeholder="Email Address"
               type="text"
               onChange={this.handleChange}
               value={email}
               labelErr={`${this.handleInputError(errors, 'email')}`}
               icon={'email'}
-            >
-
-            </FormInput>
+            />
             <FormInput
               name="password"
               placeholder="Password"

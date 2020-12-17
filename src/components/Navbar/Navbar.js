@@ -14,7 +14,7 @@ const Navbar = (props) => {
   })
 
   return (
-    <nav className="bg-deep-blue fixed inset-x-0 top-0">
+    <nav className="z-20 bg-deep-blue fixed inset-x-0 top-0">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
 
@@ -32,9 +32,6 @@ const Navbar = (props) => {
             </div>
           </div>
 
-
-
-
           <div className="flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <button className="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white-lilac focus:outline-none focus:text-white-lilac focus:bg-electric-violet transition duration-150 ease-in-out" aria-label="Notifications">
               <BiBell className="h-6 w-6" />
@@ -45,13 +42,8 @@ const Navbar = (props) => {
             {/* Mobile menu button */}
             <button type="button" onClick={() => setIsMenuOpen(!isMenuOpen)} className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white-lilac hover:bg-biloba-violet focus:outline-none focus:bg-electric-violet focus:text-white-lilac transition duration-150 ease-in-out" aria-label="Main menu" aria-expanded="false">
 
-              {/*  Icon when menu is closed. */}
               <BiMenuAltRight className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`} />
-
-
-              {/*  Icon when menu is open. */}
-              <BiX
-                className={`${isMenuOpen ? 'block' : 'hidden'} h-6 w-6`} />
+              <BiX className={`${isMenuOpen ? 'block' : 'hidden'} h-6 w-6`} />
 
             </button>
           </div>
