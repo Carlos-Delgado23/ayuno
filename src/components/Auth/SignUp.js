@@ -8,7 +8,7 @@ import SocialButton from '../CustomButton/SocialButton'
 
 import { VscLoading } from 'react-icons/vsc'
 
-class Register extends React.Component {
+class SignUp extends React.Component {
   state = {
     username: "",
     email: "",
@@ -200,4 +200,4 @@ class Register extends React.Component {
   }
 }
 
-export default Register
+export default SignUp

@@ -6,7 +6,7 @@ import firebase from '../../firebase'
 import { VscLoading } from 'react-icons/vsc'
 import SocialButton from '../CustomButton/SocialButton'
 
-class Login extends React.Component {
+class SignIn extends React.Component {
   state = {
     email: "",
     password: "",
@@ -129,4 +129,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+export default SignIn

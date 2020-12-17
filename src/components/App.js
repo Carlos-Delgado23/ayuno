@@ -4,8 +4,8 @@ import './App.css'
 
 import Navbar from './Navbar/Navbar'
 import BottomNav from './BottomNav/BottomNav'
-import Login from "./Auth/Login"
-import Register from "./Auth/Register"
+import SignIn from "./Auth/SignIn"
+import SignUp from "./Auth/SignUp"
 import Fasts from "./Fasts/Fasts"
 import Tracker from "./Tracker/Tracker"
 import Spinner from "./Spinner/Spinner"
@@ -22,8 +22,8 @@ class App extends React.Component {
           <Navbar />
           <Switch>
             <Route exact path="/home" component={Home} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
+            <Route path="/sign-in" component={SignIn} />
+            <Route path="/sign-up" component={SignUp} />
             <Route path="/fasts" component={Fasts} />
             <Route path="/tracker" component={Tracker} />
             {/* <Route path="/recipes" component={Recipes} />
