@@ -29,7 +29,7 @@ const Navbar = (props) => {
                 <NavbarLink to="/home">Home</NavbarLink>
                 <NavbarLink to="/fasts" custClass="ml-4">Fasts</NavbarLink>
                 <NavbarLink to="/tracker" custClass="ml-4">Tracker</NavbarLink>
-                <NavbarLink to="/about" custClass="ml-4">About Us</NavbarLink>
+                <NavbarLink to="/contact" custClass="ml-4">Get In Touch</NavbarLink>
               </div>
             </div>
           </div>
@@ -57,7 +57,7 @@ const Navbar = (props) => {
           <NavbarLink to="/home" custClass="block  text-base">Home</NavbarLink>
           <NavbarLink to="/fasts" custClass="mt-1 block text-base">Fasts</NavbarLink>
           <NavbarLink to="/tracker" custClass="mt-1 block text-base">Tracker</NavbarLink>
-          <NavbarLink to="/about" custClass="mt-1 block text-base">About Us</NavbarLink>
+          <NavbarLink to="/contact" custClass="mt-1 block text-base">Get In Touch</NavbarLink>
         </div>
       </div>
     </nav >

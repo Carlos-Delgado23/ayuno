@@ -9,6 +9,7 @@ import SignUp from "./Auth/SignUp"
 import Fasts from "./Fasts/Fasts"
 import Tracker from "./Tracker/Tracker"
 import Spinner from "./Spinner/Spinner"
+import Contact from "./Contact/Contact"
 
 import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -28,8 +29,8 @@ class App extends React.Component {
             <Route path="/tracker" component={Tracker} />
             {/* <Route path="/recipes" component={Recipes} />
           <Route path="/profile" component={Profile} />
-          <Route path="/settings" component={Settings}/>
-          <Route path="/about" component={About} /> */}
+          <Route path="/settings" component={Settings}/> */}
+            <Route path="/contact" component={Contact} />
           </Switch>
           <BottomNav />
         </div>
