@@ -8,7 +8,6 @@ import ContactInfo from './ContactInfo'
 
 class Contact extends React.Component {
   state = {
-    name: '',
     email: '',
     title: '',
     message: '',
@@ -28,7 +27,6 @@ class Contact extends React.Component {
 
   render() {
     const {
-      name,
       email,
       title,
       message,
@@ -45,7 +43,7 @@ class Contact extends React.Component {
           <div className="border-0 rounded-3xl shadow-lg relative flex flex-col w-full bg-white-lilac outline-none focus:outline-none">
 
             {/*header*/}
-            <div className="flex items-start justify-between pt-8 pb-6 px-6 rounded-t">
+            <div className="flex items-start justify-between p-6 rounded-t">
               <h3 className="text-2xl font-sans font-medium text-deep-blue">
                 Get In Touch
                     </h3>
@@ -86,7 +84,7 @@ class Contact extends React.Component {
 
               {/*footer*/}
               <div
-                className="flex items-center justify-end pt-2 pb-8 px-6 rounded-b">
+                className="flex items-center justify-end pt-2 pb-6 px-6 rounded-b">
                 <button disabled={loading} className="bg-electric-violet h-12 text-white-lilac w-full rounded-3xl shadow-lg">
                   <VscLoading
                     className={`animate-spin ${loading ? 'inline-block' : 'hidden'}`} />

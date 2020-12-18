@@ -14,28 +14,28 @@ import Contact from "./Contact/Contact"
 import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-class App extends React.Component {
-  render() {
-    return this.props.isLoading ?
-      <Spinner /> :
-      (
-        <div>
-          <Navbar />
-          <Switch>
-            <Route exact path="/home" component={Home} />
-            <Route path="/sign-in" component={SignIn} />
-            <Route path="/sign-up" component={SignUp} />
-            <Route path="/fasts" component={Fasts} />
-            <Route path="/tracker" component={Tracker} />
-            {/* <Route path="/recipes" component={Recipes} />
+const App = ({ currentUser }) => {
+
+  return this.props.isLoading ?
+    <Spinner /> :
+    (
+      <div>
+        <Navbar />
+        <Switch>
+          <Route exact path="/home" component={Home} />
+          <Route path="/sign-in" component={SignIn} />
+          <Route path="/sign-up" component={SignUp} />
+          <Route path="/fasts" render={(props) => (<Fasts {...props} currentUser={currentUser} />)} />
+          <Route path="/tracker" component={Tracker} />
+          {/* <Route path="/recipes" component={Recipes} />
           <Route path="/profile" component={Profile} />
           <Route path="/settings" component={Settings}/> */}
-            <Route path="/contact" component={Contact} />
-          </Switch>
-          <BottomNav />
-        </div>
-      )
-  }
+          <Route path="/contact" component={Contact} />
+        </Switch>
+        <BottomNav />
+      </div>
+    )
+
 }
 
 const mapStateToProps = state => ({
