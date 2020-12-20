@@ -14,6 +14,7 @@ import { Provider, connect } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer from "./reducers"
 import { setUser, clearUser } from './actions'
+import Spinner from './components/Spinner/Spinner'
 
 const store = createStore(rootReducer, composeWithDevTools());
 
@@ -31,9 +32,10 @@ class Root extends React.Component {
   }
 
   render() {
-    return (
-      <App />
-    )
+    return this.props.isLoading ?
+      <Spinner /> : (
+        <App />
+      )
   }
 }
 
