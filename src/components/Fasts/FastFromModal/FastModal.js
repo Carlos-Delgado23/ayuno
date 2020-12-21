@@ -45,7 +45,7 @@ class FastModal extends React.Component {
     firebase
       .database()
       .ref()
-      .child(`posts/${slug}`)
+    // .child(`posts/${slug}`)
   }
 
 
