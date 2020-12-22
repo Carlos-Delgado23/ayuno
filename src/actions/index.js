@@ -27,7 +27,7 @@ export const setCurrentFast = fast => {
 }
 
 export const createFast = fast => {
-  return (dispatch, getState) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
     dispatch({ type: actionTypes.CREATE_FAST, fast })
   }
 }
