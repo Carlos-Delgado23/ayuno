@@ -17,6 +17,7 @@ var config = {
 };
 
 // Initialize Firebase
+firebase.firestore().settings({ timestampsInSnapshots: true })
 firebase.initializeApp(config);
 firebase.analytics();
 
