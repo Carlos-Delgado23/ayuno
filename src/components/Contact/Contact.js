@@ -79,7 +79,7 @@ class Contact extends React.Component {
 
 
                 {/* message */}
-                <textarea value={message} name="message" rows="3" class="px-3 py-3 placeholder-gray-400 text-deep-blue relative bg-white bg-white rounded-lg text-sm shadow outline-none w-full border-b" placeholder="Message"></textarea>
+                <textarea value={message} name="message" rows="3" className="px-3 py-3 placeholder-gray-400 text-deep-blue relative bg-white bg-white rounded-lg text-sm shadow outline-none w-full border-b" placeholder="Message"></textarea>
               </div>
 
               {/*footer*/}
