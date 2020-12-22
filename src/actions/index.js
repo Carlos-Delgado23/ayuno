@@ -25,3 +25,9 @@ export const setCurrentFast = fast => {
     }
   }
 }
+
+export const createFast = fast => {
+  return (dispatch, getState) => {
+    dispatch({ type: actionTypes.CREATE_FAST, fast })
+  }
+}

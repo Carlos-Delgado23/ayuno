@@ -10,14 +10,15 @@ import './tailwind.output.css'
 import App from './components/App'
 import Spinner from './components/Spinner/Spinner'
 
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider, connect } from 'react-redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
+import thunk from 'redux-thunk'
+// import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer from "./reducers"
 import { setUser, clearUser } from './actions'
 
 
-const store = createStore(rootReducer, composeWithDevTools());
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 class Root extends React.Component {
   componentDidMount() {

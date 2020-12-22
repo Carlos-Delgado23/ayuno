@@ -24,18 +24,24 @@ const user_reducer = (state = initialUserState, action) => {
 }
 
 const initialFastState = {
-  currentFast: null,
+  // currentFast: null,
+  currentFasts: [
+    { id: '1', title: 'pckurdu1', content: 'first project' },
+    { id: '2', title: 'pckurdu1', content: 'second project' },
+    { id: '3', title: 'pckurdu1', content: 'third project' },
+  ]
 }
 
 const fast_reducer = (state = initialFastState, action) => {
   switch (action.type) {
-    case actionTypes.SET_CURRENT_FAST:
-      return {
-        ...state,
-        currentFast: action.payload.currentFast,
-      }
+    case actionTypes.CREATE_FAST:
+      console.log('create fast: ', action.fast)
+    //     return {
+    //       ...state,
+    //       currentFast: action.payload.currentFast,
+    //     }
     default:
-      return state;
+      return state
   }
 }
 
