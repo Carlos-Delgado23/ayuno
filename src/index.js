@@ -1,20 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/App'
+import { BrowserRouter as Router, withRouter } from 'react-router-dom'
 
 import reportWebVitals from './reportWebVitals'
 import firebase from "./firebase"
 
 import './tailwind.output.css'
 
-import { BrowserRouter as Router, withRouter } from 'react-router-dom'
+import App from './components/App'
+import Spinner from './components/Spinner/Spinner'
 
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer from "./reducers"
 import { setUser, clearUser } from './actions'
-import Spinner from './components/Spinner/Spinner'
+
 
 const store = createStore(rootReducer, composeWithDevTools());
 

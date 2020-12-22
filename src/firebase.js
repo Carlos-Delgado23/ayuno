@@ -3,6 +3,7 @@ import 'firebase/auth'
 import 'firebase/database'
 import 'firebase/storage'
 import 'firebase/analytics'
+import 'firebase/firestore'
 
 var config = {
   apiKey: "AIzaSyBn53ncm_LgOix5B47oFaY9N-gdNUA-zvw",
