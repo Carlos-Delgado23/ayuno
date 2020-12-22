@@ -7,8 +7,8 @@ import BottomNav from './BottomNav/BottomNav'
 import SignIn from './Auth/SignIn'
 import SignUp from './Auth/SignUp'
 import Fasts from './Fasts/Fasts'
+import Fast from './Fasts/Fast'
 import Tracker from './Tracker/Tracker'
-import Spinner from './Spinner/Spinner'
 import Contact from './Contact/Contact'
 import Profile from './Profile/Profile'
 import ProfileSettings from './Profile/ProfileSettings'
@@ -16,7 +16,9 @@ import ProfileSettings from './Profile/ProfileSettings'
 import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-const App = ({ currentUser }) => {
+
+const App = ({ currentUser, currentFast }) => {
+
 
   return (
     <div>
@@ -25,9 +27,10 @@ const App = ({ currentUser }) => {
         <Route exact path="/home" component={Home} />
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />
-        <Route path="/fasts" render={(props) => (<Fasts {...props} currentUser={currentUser} />)} />
         {/* <Route path="/fasts" component={Fasts} /> */}
+        <Route path="/fast/:id" component={Fast} />
         <Route path="/tracker" component={Tracker} />
+        <Route path="/fasts" render={(props) => (<Fasts {...props} currentFast={currentFast} key={currentFast && currentFast.id} />)} />
         {/* <Route path="/recipes" component={Recipes} /> */}
         <Route path="/profile" component={Profile} />
         <Route path="/settings" component={ProfileSettings} />
@@ -40,7 +43,8 @@ const App = ({ currentUser }) => {
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+  currentUser: state.user.currentUser,
+  currentFast: state.fast.currentFast
 })
 
 export default connect(mapStateToProps)(App);
