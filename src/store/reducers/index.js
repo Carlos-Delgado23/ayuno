@@ -1,5 +1,7 @@
 import * as actionTypes from '../actions/types'
 import { combineReducers } from 'redux'
+import { firebaseReducer } from 'react-redux-firebase'
+import { firestoreReducer } from 'redux-firestore'
 
 const initialUserState = {
   currentUser: null,
@@ -35,11 +37,11 @@ const initialFastState = {
 const fast_reducer = (state = initialFastState, action) => {
   switch (action.type) {
     case actionTypes.CREATE_FAST:
-      console.log('create fast: ', action.fast)
-    //     return {
-    //       ...state,
-    //       currentFast: action.payload.currentFast,
-    //     }
+      console.log('Create Fast: ', action.fast)
+      return state
+    case actionTypes.CREATE_FAST_ERROR:
+      console.log('Create Fast Error: ', action.fast)
+      return state
     default:
       return state
   }
@@ -47,7 +49,9 @@ const fast_reducer = (state = initialFastState, action) => {
 
 const rootReducer = combineReducers({
   user: user_reducer,
-  fast: fast_reducer
+  fast: fast_reducer,
+  firebase: firebaseReducer,
+  firestore: firestoreReducer
 });
 
 export default rootReducer;
