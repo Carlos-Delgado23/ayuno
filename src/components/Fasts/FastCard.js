@@ -12,7 +12,7 @@ const FastCard = ({ fast }) => {
 
         <Link to="#" className="text-2xl font-medium hover:text-biloba-violet pb-4">{fast.title}</Link>
 
-        <Link to="#" className="pb-6">{fast.body}</Link>
+        <Link to="#" className="pb-6">{fast.content}</Link>
         <CustomButton to="#" type="button">Read More</CustomButton>
       </div>
     </article >

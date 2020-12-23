@@ -5,3 +5,4 @@ export const CLEAR_USER = 'CLEAR_USER';
 // Fast Action Types
 export const SET_CURRENT_FAST = 'SET_CURRENT_FAST'
 export const CREATE_FAST = 'CREATE_FAST'
+export const CREATE_FAST_ERROR = 'CREATE_FAST_ERROR'
