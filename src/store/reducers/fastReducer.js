@@ -10,8 +10,13 @@ const fastReducer = (state = initState, action) => {
   switch (action.type) {
     case 'CREATE_FAST':
       console.log('created fast', action.fast)
+      return state
+    case 'CREATE_FAST_ERROR':
+      console.log('create fast error', action.err)
+      return state
+    default:
+      return state
   }
-  return state
 }
 
 export default fastReducer
