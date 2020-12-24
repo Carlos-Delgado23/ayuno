@@ -1,17 +1,15 @@
+import * as actionTypes from '../actions/types'
+
 const initState = {
-  fasts: [
-    { id: '1', title: 'pckurdu1', content: 'first project' },
-    { id: '2', title: 'pckurdu1', content: 'second project' },
-    { id: '3', title: 'pckurdu1', content: 'third project' },
-  ]
+  fasts: []
 }
 
 const fastReducer = (state = initState, action) => {
   switch (action.type) {
-    case 'CREATE_FAST':
+    case actionTypes.CREATE_FAST:
       console.log('created fast', action.fast)
       return state
-    case 'CREATE_FAST_ERROR':
+    case actionTypes.CREATE_FAST_ERROR:
       console.log('create fast error', action.err)
       return state
     default:

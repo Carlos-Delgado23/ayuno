@@ -43,9 +43,8 @@ class Fasts extends React.Component {
         <FastModal />
         {
           fasts && fasts.map(fast => (
-            <Link to={'/fast/' + fast.id}>
+            <Link to={'/fast/' + fast.id} key={fast.id}>
               <FastCard
-                key={fast.id}
                 fast={fast}
               />
             </Link>
