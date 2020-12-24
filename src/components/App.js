@@ -27,10 +27,10 @@ const App = ({ currentUser, currentFast }) => {
         <Route exact path="/home" component={Home} />
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />
-        {/* <Route path="/fasts" component={Fasts} /> */}
+        <Route path="/fasts" component={Fasts} />
         <Route path="/fast/:id" component={Fast} />
         <Route path="/tracker" component={Tracker} />
-        <Route path="/fasts" render={(props) => (<Fasts {...props} currentFast={currentFast} key={currentFast && currentFast.id} />)} />
+        {/* <Route path="/fasts" render={(props) => (<Fasts {...props} currentFast={currentFast} key={currentFast && currentFast.id} />)} /> */}
         {/* <Route path="/recipes" component={Recipes} /> */}
         <Route path="/profile" component={Profile} />
         <Route path="/settings" component={ProfileSettings} />

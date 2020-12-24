@@ -1,31 +1,28 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, withRouter } from 'react-router-dom'
-
-import reportWebVitals from './reportWebVitals'
-import firebase from "./firebase"
-import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
-import { reduxFirestore, getFirestore } from 'redux-firestore';
-
-import './tailwind.output.css'
-
-import App from './components/App'
-import Spinner from './components/Spinner/Spinner'
-
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider, connect } from 'react-redux'
 import thunk from 'redux-thunk'
-// import { composeWithDevTools } from 'redux-devtools-extension'
-import rootReducer from "./reducers"
-import { setUser, clearUser } from './actions'
+import reportWebVitals from './reportWebVitals'
+import firebase from "firebase/app"
+import fbConfig from './fbConfig'
+import { reactReduxFirebase, getFirebase, ReactReduxFirebaseProvider, firebaseReducer } from 'react-redux-firebase';
+import { reduxFirestore, getFirestore, createFirestoreInstance, firestoreReducer } from 'redux-firestore';
+
+import './tailwind.output.css'
+import App from './components/App'
+import Spinner from './components/Spinner/Spinner'
+
+import rootReducer from "./store/reducers/rootReducer"
+import { setUser, clearUser } from './store/actions/index'
 
 
 const store = createStore(
   rootReducer,
   compose(
     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-    reactReduxFirebase(firebase),
-    reduxFirestore(firebase)
+    reduxFirestore(firebase, fbConfig)
   )
 )
 
@@ -59,13 +56,22 @@ const RootWithAuth = withRouter(
     mapStateToProps,
     { setUser, clearUser }
   )(Root)
-);
+)
+
+const rrfProps = {
+  firebase,
+  config: fbConfig,
+  dispatch: store.dispatch,
+  createFirestoreInstance
+};
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-      <RootWithAuth />
-    </Router>
+    <ReactReduxFirebaseProvider {...rrfProps}>
+      <Router>
+        <RootWithAuth />
+      </Router>
+    </ReactReduxFirebaseProvider>
   </Provider>,
   document.getElementById('root')
 );
