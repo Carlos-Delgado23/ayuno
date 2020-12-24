@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { signIn } from '../../store/actions/authActions'
 import FormInput from '../FormInput/FormInput'
-import firebase from '../../firebase'
 
 import { VscLoading } from 'react-icons/vsc'
 import SocialButton from '../CustomButton/SocialButton'
@@ -14,7 +15,9 @@ class SignIn extends React.Component {
     loading: false,
   }
 
-  displayErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>)
+  displayErrors = (errors) => {
+    errors.map((error, i) => <p key={i}>{error.message}</p>)
+  }
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value })
@@ -23,20 +26,7 @@ class SignIn extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     if (this.isFormValid(this.state)) {
-      this.setState({ errors: [], loading: true });
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.state.email, this.state.password)
-        .then(singnedInUser => {
-          console.log(singnedInUser)
-        })
-        .catch(err => {
-          console.error(err);
-          this.setState({
-            errors: this.state.errors.concat(err),
-            loading: false
-          })
-        })
+      this.props.signIn({ email: this.state.email, password: this.state.password })
     }
   }
 
@@ -52,12 +42,13 @@ class SignIn extends React.Component {
       password,
       errors,
       loading,
-    } = this.state;
+    } = this.state
+
+    const { authError } = this.props
 
     return (
       <div className="flex justify-center content-center h-screen">
         <div className="w-5/6 max-w-xl my-auto p-6 bg-white-lilac rounded-xl flex flex-col justify-center items-center">
-
           <h1 className="text-2xl font-medium text-deep-blue">
             Sign In
         </h1>
@@ -67,12 +58,14 @@ class SignIn extends React.Component {
           <Link to="/register" className="text-electric-violet pl-2">Create an account</Link>
           </h5>
 
-          {errors.length > 0 && (
+          {errors.length > 0 || authError ?
             <div className="text-red-600 text-center mb-6">
               <h3 className="text-lg font-bold uppercase">Error</h3>
+              {authError}
               {this.displayErrors(errors)}
-            </div>
-          )}
+            </div> :
+            null
+          }
 
           <form className="w-11/12" onSubmit={this.handleSubmit}>
             <FormInput
@@ -105,14 +98,14 @@ class SignIn extends React.Component {
 
           <div className="flex justify-center items-center w-full">
             <div className="hidden sm:block"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="2" viewBox="0 0 100 2">
-              <line id="Line" x2="100" transform="translate(0 1)" fill="none" stroke="#13218c" stroke-width="2" />
+              <line id="Line" x2="100" transform="translate(0 1)" fill="none" stroke="#13218c" strokeWidth="2" />
             </svg>
             </div>
 
             <h6 className="text-xs text-deep-blue font-medium my-6 mx-6">Or Sign In With</h6>
 
             <div className="hidden sm:block"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="2" viewBox="0 0 100 2">
-              <line id="Line" x2="100" transform="translate(0 1)" fill="none" stroke="#13218c" stroke-width="2" />
+              <line id="Line" x2="100" transform="translate(0 1)" fill="none" stroke="#13218c" strokeWidth="2" />
             </svg>
             </div>
           </div>
@@ -129,4 +122,17 @@ class SignIn extends React.Component {
   }
 }
 
-export default SignIn
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    authError: state.auth.authError
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    signIn: (creds) => dispatch(signIn(creds))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

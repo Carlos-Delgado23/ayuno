@@ -1,32 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import { withRouter } from 'react-router-dom'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { signOut } from '../../store/actions/authActions'
 import { Transition } from '@headlessui/react'
-
-import firebase from '../../firebase'
 
 import BottomNavLink from './BottomNavLink'
 import UserMenuLink from './UserMenuLink'
 import { BiUser } from 'react-icons/bi'
 
 const BottomNav = (props) => {
-  // const [user, setUser] = useState(this.props.currentUser)
   const [profileOpen, setProfileOpen] = useState(false)
-
-  useEffect(() => {
-    return props.history.listen(() => {
-      setProfileOpen(false)
-    })
-  })
 
   const profileMenu = () => {
     setProfileOpen(!profileOpen)
   }
 
   const handleSignout = () => {
-    firebase
-      .auth()
-      .signOut()
-      .then(() => console.log('signed out!'))
+    props.signOut()
+    profileMenu()
   }
 
   return (
@@ -61,24 +51,27 @@ const BottomNav = (props) => {
                   <div className="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                     <UserMenuLink
                       to="/profile"
-                      role="menuitem">
+                      role="menuitem"
+                      onClick={profileMenu}>
                       Your Profile
                     </UserMenuLink>
                     <UserMenuLink
                       to="/settings"
-                      role="menuitem">
+                      role="menuitem"
+                      onClick={profileMenu}>
                       Settings
                     </UserMenuLink>
                     <UserMenuLink
+                      to='/sign-in'
                       role="menuitem"
                       onClick={handleSignout}>
                       Sign out
                     </UserMenuLink>
                   </div>
                 </div>
+
               </Transition>
             </div>
-
           </div>
         </div>
       </div>
@@ -86,5 +79,16 @@ const BottomNav = (props) => {
   )
 }
 
+const mapStateToProps = state => {
+  return {
 
-export default withRouter(BottomNav)
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    signOut: () => dispatch(signOut())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BottomNav)
