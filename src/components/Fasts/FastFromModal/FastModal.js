@@ -1,7 +1,9 @@
 import React from 'react'
-import mime from 'mime-types'
-import firebase from '../../../firebase'
+import { connect } from 'react-redux'
+import { createFast } from '../../../store/actions/fastActions'
 
+import fbConfig from '../../../fbConfig'
+import mime from 'mime-types'
 import Modal from 'react-modal'
 import ReactQuill from "react-quill"
 import 'react-quill/dist/quill.snow.css'
@@ -19,50 +21,25 @@ class FastModal extends React.Component {
     image: null,
     imageAlt: '',
     authorized: ['image/jpeg', 'image/png'],
-    reactQuillText: '',
-    days: '',
-    hours: '',
-    storageRef: firebase.storage().ref(),
+    body: '',
+    days: 0,
+    hours: 0,
+    storageRef: fbConfig.storage().ref(),
     user: this.props.currentUser,
   }
 
-  createFast = (fileUrl = null) => {
-    const fast = {
-      image: this.state.image,
-      imageAlt: this.state.imageAlt,
-      title: this.state.title,
-      body: this.state.reactQuillText,
-      days: this.state.days,
-      hours: this.state.hours,
-      timestamp: firebase.database.ServerValue.TIMESTAMP,
-      user: {
-        id: this.state.user.uid,
-        name: this.state.user.displayName,
-        avatar: this.state.user.photoURL
-      }
-    }
-
-    firebase
-      .database()
-      .ref()
-    // .child(`posts/${slug}`)
-  }
-
-
   addImage = e => {
-    const file = e.target.files[0]
-    if (file) {
-      this.setState({ file })
+    const image = e.target.files[0]
+    if (image) {
+      this.setState({ image })
     }
   }
 
-  isAuthorized = filename => this.state.authorized.includes(mime.lookup(filename))
-
-
+  isAuthorized = imagename => this.state.authorized.includes(mime.lookup(imagename))
 
   handleReactQuillChange = value => {
     this.setState({
-      reactQuillText: value
+      body: value
     })
   }
 
@@ -70,16 +47,21 @@ class FastModal extends React.Component {
     const { value, name } = e.target
 
     this.setState({ [name]: value })
-
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
-
-    // const { reactQuillText, title, image } = this.state()
+    const { title, body, image, imageAlt, days, hours } = this.state
 
     try {
-      console.log(this.state.reactQuillText)
+      this.props.createFast({
+        image: image,
+        imageAlt: imageAlt,
+        title: title,
+        body: body,
+        days: days,
+        hours: hours,
+      })
     } catch (error) {
       console.error(error)
     }
@@ -89,14 +71,12 @@ class FastModal extends React.Component {
     const {
       showModal,
       title,
-      image,
-      reactQuillText,
+      body,
       days,
       hours
     } = this.state
 
     return (
-
       <div>
         <button
           className="flex justify-center font-sans font-medium text-xs text-biloba-violet border border-biloba-violet hover:bg-electric-violet hover:border-electric-violet py-2 mx-auto w-1/4 rounded-full mb-8 outline-none focus:outline-none"
@@ -129,7 +109,7 @@ class FastModal extends React.Component {
                     </button>
                   </div>
 
-                  {/*body*/}
+                  {/*Form*/}
                   <form onSubmit={this.handleSubmit}>
                     <div className="relative p-6 flex-auto">
 
@@ -145,7 +125,7 @@ class FastModal extends React.Component {
                       {/* body */}
                       <ReactQuill
                         name='quill'
-                        value={reactQuillText}
+                        value={body}
                         onChange={this.handleReactQuillChange}
                         theme='snow'
                         placeholder="Tell me about this fast..."
@@ -198,12 +178,12 @@ class FastModal extends React.Component {
                               <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                             <div className="flex text-sm text-gray-600">
-                              <label htmlFor="file-upload" className="relative cursor-pointer  rounded-md font-medium text-electric-violet hover:text-biloba-violet focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-biloba-violet">
+                              <label htmlFor="image-upload" className="relative cursor-pointer  rounded-md font-medium text-electric-violet hover:text-biloba-violet focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-biloba-violet">
                                 <span>Upload a file</span>
                                 <input
                                   type="file"
                                   name="image"
-                                  value={image}
+                                  id="image-upload"
                                   onChange={this.addImage}
                                   className="sr-only" />
                               </label>
@@ -250,4 +230,10 @@ class FastModal extends React.Component {
   }
 }
 
-export default FastModal
+const mapDispatchToProps = dispatch => {
+  return {
+    createFast: (fast) => dispatch(createFast(fast))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(FastModal)

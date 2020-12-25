@@ -8,6 +8,7 @@ import UserMenuLink from './UserMenuLink'
 import { BiUser } from 'react-icons/bi'
 
 const BottomNav = (props) => {
+  const { auth } = props
   const [profileOpen, setProfileOpen] = useState(false)
 
   const profileMenu = () => {
@@ -49,24 +50,35 @@ const BottomNav = (props) => {
 
                 <div className="origin-bottom-right absolute right-0 bottom-0 mb-16 w-48 rounded-md shadow-lg">
                   <div className="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                    <UserMenuLink
-                      to="/profile"
-                      role="menuitem"
-                      onClick={profileMenu}>
-                      Your Profile
-                    </UserMenuLink>
-                    <UserMenuLink
-                      to="/settings"
-                      role="menuitem"
-                      onClick={profileMenu}>
-                      Settings
-                    </UserMenuLink>
-                    <UserMenuLink
-                      to='/sign-in'
-                      role="menuitem"
-                      onClick={handleSignout}>
-                      Sign out
-                    </UserMenuLink>
+                    {!auth.id
+                      ? <UserMenuLink
+                        to='/sign-in'
+                        role='menuitem'
+                        onClick={profileMenu}>
+                        Sign In
+                      </UserMenuLink>
+                      :
+                      <>
+                        <UserMenuLink
+                          to="/profile"
+                          role="menuitem"
+                          onClick={profileMenu}>
+                          Your Profile
+                        </UserMenuLink>
+                        <UserMenuLink
+                          to="/settings"
+                          role="menuitem"
+                          onClick={profileMenu}>
+                          Settings
+                        </UserMenuLink>
+                        <UserMenuLink
+                          to='/sign-in'
+                          role="menuitem"
+                          onClick={handleSignout}>
+                          Sign Out
+                        </UserMenuLink>
+                      </>
+                    }
                   </div>
                 </div>
 
@@ -81,7 +93,7 @@ const BottomNav = (props) => {
 
 const mapStateToProps = state => {
   return {
-
+    auth: state.firebase.auth
   }
 }
 
