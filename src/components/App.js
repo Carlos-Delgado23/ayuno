@@ -9,17 +9,17 @@ import SignUp from './Auth/SignUp'
 import Fasts from './Fasts/Fasts'
 import Fast from './Fasts/Fast'
 import Tracker from './Tracker/Tracker'
+import Recipes from './Recipes/Recipes'
 import Contact from './Contact/Contact'
 import Profile from './Profile/Profile'
 import ProfileSettings from './Profile/ProfileSettings'
 
 import { Switch, Route } from 'react-router-dom'
+import PrivateRoute from './PrivateRoute'
 import { connect } from 'react-redux'
 
 
-const App = ({ currentUser, currentFast }) => {
-
-
+const App = () => {
   return (
     <div>
       <Navbar />
@@ -27,13 +27,12 @@ const App = ({ currentUser, currentFast }) => {
         <Route exact path="/home" component={Home} />
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />
-        <Route path="/fasts" component={Fasts} />
-        <Route path="/fast/:id" component={Fast} />
-        <Route path="/tracker" component={Tracker} />
-        {/* <Route path="/fasts" render={(props) => (<Fasts {...props} currentFast={currentFast} key={currentFast && currentFast.id} />)} /> */}
-        {/* <Route path="/recipes" component={Recipes} /> */}
-        <Route path="/profile" component={Profile} />
-        <Route path="/settings" component={ProfileSettings} />
+        <PrivateRoute path="/fasts" component={Fasts} />
+        <PrivateRoute path="/fast/:id" component={Fast} />
+        <PrivateRoute path="/tracker" component={Tracker} />
+        <PrivateRoute path="/recipes" component={Recipes} />
+        <PrivateRoute path="/profile" component={Profile} />
+        <PrivateRoute path="/settings" component={ProfileSettings} />
         <Route path="/contact" component={Contact} />
       </Switch>
       <BottomNav />
