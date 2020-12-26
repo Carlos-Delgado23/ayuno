@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import * as dayjs from 'dayjs'
 
 import CustomButton from '../CustomButton/CustomButton'
 
@@ -9,10 +9,12 @@ const FastCard = ({ fast }) => {
       < img src="https://source.unsplash.com/collection/1346951/1000x500?sig=1" className="object-cover" alt="post" />
       <div className="bg-deep-blue flex flex-col justify-start p-6 text-white-lilac text-sans">
 
-        <Link to="#" className="text-2xl font-medium hover:text-biloba-violet pb-4">{fast.title}</Link>
+        <p className="text-2xl font-medium hover:text-biloba-violet pb-4">{fast.title}</p>
 
-        <Link to="#" className="pb-6">{fast.body}</Link>
-        <CustomButton to="#" type="button">Read More</CustomButton>
+        <div className="pb-6">{fast.body}</div>
+        <div className="text-xs text-gray-500">
+          {dayjs(fast.createdAt.toDate()).format('MMM DD, YYYY')}
+        </div>
       </div>
     </article >
   )
