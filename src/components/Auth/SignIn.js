@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signIn } from '../../store/actions/authActions'
 import FormInput from '../FormInput/FormInput'
@@ -44,7 +44,8 @@ class SignIn extends React.Component {
       loading,
     } = this.state
 
-    const { authError } = this.props
+    const { authError, auth } = this.props
+    if (auth.uid) <Redirect to='/fasts' />
 
     return (
       <div className="flex justify-center content-center h-screen">
@@ -55,16 +56,16 @@ class SignIn extends React.Component {
 
           <h5 className="text-xs font-medium text-deep-blue mt-2 mb-6">
             New user?
-          <Link to="/register" className="text-electric-violet pl-2">Create an account</Link>
+          <Link to="/signup" className="text-electric-violet pl-2">Create an account</Link>
           </h5>
 
-          {errors.length > 0 || authError ?
-            <div className="text-red-600 text-center mb-6">
+          {errors.length > 0 || authError
+            ? <div className="text-red-600 text-center mb-6">
               <h3 className="text-lg font-bold uppercase">Error</h3>
               {authError}
               {this.displayErrors(errors)}
-            </div> :
-            null
+            </div>
+            : null
           }
 
           <form className="w-11/12" onSubmit={this.handleSubmit}>
@@ -125,6 +126,7 @@ class SignIn extends React.Component {
 const mapStateToProps = state => {
   console.log(state)
   return {
+    auth: state.firebase.auth,
     authError: state.auth.authError
   }
 }
