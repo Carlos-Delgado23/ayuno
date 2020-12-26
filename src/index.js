@@ -33,7 +33,7 @@ class Root extends React.Component {
         this.props.setUser(user);
         this.props.history.push('/fasts');
       } else {
-        this.props.history.push('/sign-in');
+        this.props.history.push('/signin');
         this.props.clearUser();
       }
     })
@@ -58,9 +58,15 @@ const RootWithAuth = withRouter(
   )(Root)
 )
 
+const profileSpecificProps = {
+  userProfile: "users",
+  useFirestoreForProfile: true,
+  attachAuthIsReady: true,
+};
+
 const rrfProps = {
   firebase,
-  config: fbConfig,
+  config: fbConfig && profileSpecificProps,
   dispatch: store.dispatch,
   createFirestoreInstance
 };

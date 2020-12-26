@@ -25,8 +25,8 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route exact path="/home" component={Home} />
-        <Route path="/sign-in" component={SignIn} />
-        <Route path="/sign-up" component={SignUp} />
+        <Route path="/signin" component={SignIn} />
+        <Route path="/signup" component={SignUp} />
         <PrivateRoute path="/fasts" component={Fasts} />
         <PrivateRoute path="/fast/:id" component={Fast} />
         <PrivateRoute path="/tracker" component={Tracker} />
