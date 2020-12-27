@@ -11,8 +11,8 @@ import 'react-quill/dist/quill.snow.css'
 import './modal.css'
 import { BiX } from 'react-icons/bi'
 
-
 Modal.setAppElement('#root')
+
 
 class FastModal extends React.Component {
   state = {
@@ -28,6 +28,25 @@ class FastModal extends React.Component {
     user: this.props.currentUser,
   }
 
+  modules = {
+    toolbar: [
+      [{ 'size': ['small', false, 'large', 'huge'] }],
+      ["bold", "italic"],
+      [{ 'align': [] }],
+      [{ list: "bullet" }],
+      ["blockquote"],
+    ]
+  }
+
+  formats = [
+    'font',
+    'size',
+    'bold', 'italic', 'underline',
+    'list', 'bullet',
+    'align',
+    'color', 'background'
+  ]
+
   addImage = e => {
     const image = e.target.files[0]
     if (image) {
@@ -37,7 +56,8 @@ class FastModal extends React.Component {
 
   isAuthorized = imagename => this.state.authorized.includes(mime.lookup(imagename))
 
-  handleReactQuillChange = value => {
+  handleReactQuillChange = (value) => {
+    console.log(value)
     this.setState({
       body: value
     })
@@ -65,6 +85,7 @@ class FastModal extends React.Component {
     } catch (error) {
       console.error(error)
     }
+    this.setState({ showModal: false })
   }
 
   render() {
@@ -127,17 +148,10 @@ class FastModal extends React.Component {
                         name='quill'
                         value={body}
                         onChange={this.handleReactQuillChange}
+                        formats={this.formats}
                         theme='snow'
                         placeholder="Tell me about this fast..."
-                        modules={{
-                          toolbar: [
-                            [{ 'size': ['small', false, 'large', 'huge'] }],
-                            ["bold", "italic"],
-                            [{ 'align': [] }],
-                            [{ list: "bullet" }],
-                            ["blockquote"],
-                          ]
-                        }}
+                        modules={this.modules}
                         className="mt-6 bg-white"
                       />
 

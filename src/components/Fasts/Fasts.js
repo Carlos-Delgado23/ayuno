@@ -35,7 +35,7 @@ class Fasts extends React.Component {
   }
 
   render() {
-    const { fasts } = this.props
+    const { fasts, auth } = this.props
 
     return (
       <div className="w-full md:w-2/3 flex flex-col justify-center content-center my-16 mx-auto px-3">
@@ -58,7 +58,8 @@ class Fasts extends React.Component {
 const mapStateToProps = (state) => {
   console.log(state)
   return {
-    fasts: state.firestore.ordered.fasts
+    fasts: state.firestore.ordered.fasts,
+    auth: state.firebase.auth
   }
 }
 
