@@ -1,30 +1,32 @@
+import * as actionTypes from '../actions/types'
+
 const initState = {
   authError: null
 }
 
 const authReducer = (state = initState, action) => {
   switch (action.type) {
-    case 'LOGIN_SUCCESS':
+    case actionTypes.LOGIN_SUCCESS:
       console.log('Signin Success')
       return {
         ...state,
         authError: null
       }
-    case 'LOGIN_ERROR':
+    case actionTypes.LOGIN_ERROR:
       return {
         ...state,
         authError: 'Login Failed'
       }
-    case 'SIGNOUT_SUCCESS':
+    case actionTypes.SIGNOUT_SUCCESS:
       console.log('Signout Success')
       return state
-    case 'SIGNUP_SUCCESS':
+    case actionTypes.SIGNUP_SUCCESS:
       console.log('Signup Success')
       return {
         ...state,
         authError: null
       }
-    case 'SIGNUP_ERROR':
+    case actionTypes.SIGNUP_ERROR:
       console.log('Signup Error')
       return {
         ...state,
