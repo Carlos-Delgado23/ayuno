@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { getFirebase } from 'react-redux-firebase'
 import { createFast } from '../../../store/actions/fastActions'
 
 import fbConfig from '../../../fbConfig'
@@ -18,8 +19,8 @@ class FastModal extends React.Component {
   state = {
     showModal: false,
     title: '',
-    image: null,
-    imageAlt: '',
+    imageFile: null,
+    imageURL: '',
     authorized: ['image/jpeg', 'image/png'],
     body: '',
     days: 0,
@@ -49,8 +50,9 @@ class FastModal extends React.Component {
 
   addImage = e => {
     const image = e.target.files[0]
+
     if (image) {
-      this.setState({ image })
+      this.setState({ imageFile: image })
     }
   }
 
@@ -65,23 +67,52 @@ class FastModal extends React.Component {
 
   handleChange = e => {
     const { value, name } = e.target
-
     this.setState({ [name]: value })
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
-    const { title, body, image, imageAlt, days, hours } = this.state
+    const { title, body, imageFile, days, hours } = this.state
+    const { createFast } = this.props
 
     try {
-      this.props.createFast({
-        image: image,
-        imageAlt: imageAlt,
-        title: title,
-        body: body,
-        days: days,
-        hours: hours,
-      })
+      if (this.isAuthorized(imageFile.name)) {
+        const metadata = { contentType: mime.lookup(imageFile.name) }
+        const storageRef = getFirebase().storage().ref()
+        const uploadTask = storageRef.child(`images/${imageFile.name}`).put(imageFile, metadata)
+
+        uploadTask.on("state_changed", (snapshot) => {
+          let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+          console.log('Upload is ' + progress + '% done');
+          switch (snapshot.state) {
+            case getFirebase().storage.TaskState.PAUSED:
+              console.log('Upload is paused')
+              break
+            case getFirebase().storage.TaskState.RUNNING:
+              console.log('Upload is running')
+              break
+          }
+        }, function (error) {
+          console.log(error)
+        }, function () {
+          uploadTask.snapshot.ref
+            .getDownloadURL()
+            .then(url => {
+              console.log('File available at', url);
+              console.log(title)
+
+              createFast({
+                imageURL: url,
+                imageAlt: imageFile.name,
+                title: title,
+                body: body,
+                days: days,
+                hours: hours,
+              }, imageFile, metadata)
+            })
+        })
+      }
     } catch (error) {
       console.error(error)
     }
@@ -196,7 +227,7 @@ class FastModal extends React.Component {
                                 <span>Upload a file</span>
                                 <input
                                   type="file"
-                                  name="image"
+                                  name="imageFile"
                                   id="image-upload"
                                   onChange={this.addImage}
                                   className="sr-only" />

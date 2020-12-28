@@ -1,21 +1,20 @@
 import * as actionTypes from './types'
 
-export const createFast = fast => {
+export const createFast = (fast) => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase()
-    const firestore = getFirebase().firestore()
+    const firestore = firebase.firestore()
     const profile = getState().firebase.profile
     const authorId = getState().firebase.auth.uid
+
     firestore.collection('fasts').add({
       ...fast,
       author: {
         fName: profile.firstName,
         lName: profile.lastName,
-        Id: authorId,
+        id: authorId,
       },
       createdAt: new Date()
-    }).then(() => {
-      firebase.uploadFile('images', fast.image)
     }).then(() => {
       dispatch({ type: actionTypes.CREATE_FAST, fast })
     }).catch(err => {
@@ -23,3 +22,5 @@ export const createFast = fast => {
     })
   }
 }
+
+
