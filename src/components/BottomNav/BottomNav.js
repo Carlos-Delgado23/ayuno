@@ -50,7 +50,7 @@ const BottomNav = (props) => {
 
                 <div className="origin-bottom-right absolute right-0 bottom-0 mb-16 w-48 rounded-md shadow-lg">
                   <div className="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                    {!auth.id
+                    {!auth.uid
                       ? <UserMenuLink
                         to='/sign-in'
                         role='menuitem'
