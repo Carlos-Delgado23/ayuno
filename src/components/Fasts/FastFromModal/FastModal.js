@@ -59,7 +59,6 @@ class FastModal extends React.Component {
   isAuthorized = imagename => this.state.authorized.includes(mime.lookup(imagename))
 
   handleReactQuillChange = (value) => {
-    console.log(value)
     this.setState({
       body: value
     })
@@ -99,9 +98,6 @@ class FastModal extends React.Component {
           uploadTask.snapshot.ref
             .getDownloadURL()
             .then(url => {
-              console.log('File available at', url);
-              console.log(title)
-
               createFast({
                 imageURL: url,
                 imageAlt: imageFile.name,

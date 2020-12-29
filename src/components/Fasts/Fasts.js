@@ -17,39 +17,26 @@ class Fasts extends React.Component {
     }
   }
 
-  addFastListener = () => {
-    let loadedFasts = []
-    this.state.fastsRef.get().then(snap => {
-      snap.forEach(doc => {
-        loadedFasts.push(doc.data())
-        this.setState({
-          fasts: loadedFasts,
-          fastsLoading: false,
-        })
-      })
-    })
-  }
-
-  componentDidMount() {
-    this.addFastListener()
-  }
-
   render() {
-    const { fasts, auth } = this.props
+    const { fasts } = this.props
 
     return (
-      <div className="w-full md:w-2/3 flex flex-col justify-center content-center my-16 mx-auto px-3">
+      <div className="md:w-5/6 flex flex-col justify-center content-center my-16 mx-auto px-3">
         <h1 className="text-4xl text-white-lilac text-center font-sans font-medium mt-3">Types of Fasts</h1>
         <FastModal />
-        {
-          fasts && fasts.map(fast => (
-            <Link to={'/fast/' + fast.id} key={fast.id}>
-              <FastCard
-                fast={fast}
-              />
-            </Link>
-          ))
-        }
+
+        <div className='p-2 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-5'>
+          {
+            fasts && fasts.map(fast => (
+              <Link to={'/fast/' + fast.id} key={fast.id} className="w-full lg:max-w-full lg:flex md:flex md:max-w-full">
+                {console.log(fast)}
+                <FastCard
+                  fast={fast}
+                />
+              </Link>
+            ))
+          }
+        </div>
       </div >
     )
   }
@@ -59,7 +46,6 @@ const mapStateToProps = (state) => {
   console.log(state)
   return {
     fasts: state.firestore.ordered.fasts,
-    auth: state.firebase.auth
   }
 }
 
