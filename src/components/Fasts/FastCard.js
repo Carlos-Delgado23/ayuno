@@ -6,7 +6,6 @@ import CustomButton from '../CustomButton/CustomButton'
 import './FastCard.css'
 
 const FastCard = ({ fast }) => {
-
   return (
     <>
       <div className="h-48 lg:h-auto lg:w-48 md:h-auto md:w-40 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden object-cover" style={{ backgroundImage: `url(${fast.imageURL ? fast.imageURL : 'https://source.unsplash.com/collection/1346951/1000x500?sig=1'})`, backgroundPosition: 'center' }} title={fast.title}>
@@ -19,7 +18,9 @@ const FastCard = ({ fast }) => {
         <div className="flex items-center md:flex-col lg:flex-row">
           <img className="w-10 h-10 rounded-full mr-4" src="https://i.pravatar.cc/300" alt="Avatar of Writer" />
           <div className="text-sm">
-            <p className="text-gray-900 leading-none">John Smith</p>
+            <p className="text-gray-900 leading-none">
+              {fast.author ? fast.author.fName + ' ' + fast.author.lName : 'Johnny Smithins'}
+            </p>
             <p className="text-gray-600">{dayjs(fast.createdAt.toDate()).format('MMM DD, YYYY')}</p>
           </div>
         </div>

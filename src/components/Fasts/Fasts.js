@@ -43,7 +43,6 @@ class Fasts extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     fasts: state.firestore.ordered.fasts,
   }

@@ -28,6 +28,7 @@ class SignIn extends React.Component {
     if (this.isFormValid(this.state)) {
       this.props.signIn({ email: this.state.email, password: this.state.password })
     }
+    <Redirect to='/fasts' />
   }
 
   isFormValid = ({ email, password }) => email && password;
@@ -45,7 +46,7 @@ class SignIn extends React.Component {
     } = this.state
 
     const { authError, auth } = this.props
-    if (auth.uid) <Redirect to='/fasts' />
+    // if (auth.uid) return <Redirect to='/fasts' />
 
     return (
       <div className="flex justify-center content-center h-screen">
