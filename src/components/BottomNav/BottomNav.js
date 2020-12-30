@@ -52,7 +52,7 @@ const BottomNav = (props) => {
                   <div className="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                     {!auth.uid
                       ? <UserMenuLink
-                        to='/sign-in'
+                        to='/signin'
                         role='menuitem'
                         onClick={profileMenu}>
                         Sign In
@@ -72,7 +72,7 @@ const BottomNav = (props) => {
                           Settings
                         </UserMenuLink>
                         <UserMenuLink
-                          to='/sign-in'
+                          to='/signin'
                           role="menuitem"
                           onClick={handleSignout}>
                           Sign Out
